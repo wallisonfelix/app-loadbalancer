@@ -1,0 +1,22 @@
+{
+  "name": "app-loadbalancer",
+  "version": "0.1.0",
+  "description": "Aplicativo para realizar o balanceamento de carga de requisições webs.",
+  "author": "Wallison Félix <wallison.felix@gmail.com>",
+  "contributors": [],
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wallisonfelix/app-loadbalancer"
+  },
+  "keywords": [
+    "Load Balancer",
+    "Balanceamento de Carga"
+  ],
+  "dependencies": {
+    "http-proxy": "1.14.0",
+    "http": "0.0.0"
+  },
+  "private": false,
+  "subdomain": "APP-LoadBalancer"
+}
