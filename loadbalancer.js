@@ -12,7 +12,7 @@ function readIps(callback) {
 	       callback(err, null);
 	   	}
 	    console.log(ips); 
-	    var arrayIps = ips.split("\r\n");  
+	    var arrayIps = ips.split("\n");  
 	    console.log(arrayIps);
 	    callback(null, arrayIps);
 	});
