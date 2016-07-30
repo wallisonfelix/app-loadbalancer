@@ -3,7 +3,8 @@ var http = require('http');
 var proxy = httpProxy.createProxyServer();
 var fs = require('fs');
  
-var IP_DEFAULT = "172.17.0.3";
+var IP_DEFAULT = "172.17.0.2";
+var PORT_DEFAULT = "8080";
 
 function readIps(callback) {
 	fs.readFile('../ips.txt', 'utf8', function(err, ips) {	
@@ -18,27 +19,22 @@ function readIps(callback) {
 }
  
 function randomUrl(callback) {
-	console.log("ok 2");
 	readIps(function(err, ips) {	
 		if (err) {
-			console.log("ok 3");
-	       callback("http://" + IP_DEFAULT);
+	       callback("http://" + IP_DEFAULT + ":" + PORT_DEFAULT);
 	   	}
-	   	console.log("ok 4");
-	   	callback("http://" + ips[Math.floor(Math.random() * ips.length)]);
+	   	callback("http://" + ips[Math.floor(Math.random() * ips.length)]  + ":" + PORT_DEFAULT);
 	});
 }
 
 var server = http.createServer(function (req, res) {
-	console.log("ok");
 	randomUrl(function(url) {
-   		proxy.web(req, res, { target: randomUrl() });
+   		proxy.web(req, res, { target: url });
    	});
 });
 
 server.on('upgrade', function (req, socket, head) {
-	console.log("ok");
-	randomUrl(function(url) {			
+	randomUrl(function(url) {		
 	   	proxy.ws(req, socket, head, { target: url });
 	});
 });
