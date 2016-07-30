@@ -3,11 +3,11 @@ var http = require('http');
 var proxy = httpProxy.createProxyServer();
 var fs = require('fs');
  
-var IP_DEFAULT = "172.17.0.2";
+var IP_DEFAULT = "172.17.0.3";
 var PORT_DEFAULT = "80";
 
 function readIps(callback) {
-	fs.readFile('../ips.txt', 'utf8', function(err, ips) {	
+	fs.readFile('/opt/docker/app/ips.txt', 'utf8', function(err, ips) {	
 		if (err) {
 	       callback(err, null);
 	   	}
