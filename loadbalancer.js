@@ -13,7 +13,7 @@ function readIps(callback) {
 	   	}
 	    var arrayIps = ips.split("\n");
 	    if (arrayIps.indexOf("")) {
-	    	arrayIps.splice(arrayIps.indexOf(""), 1);
+	    	arrayIps = arrayIps.splice(arrayIps.indexOf(""), 1);
 	    }
 	    console.log(arrayIps);
 	    callback(null, arrayIps);
