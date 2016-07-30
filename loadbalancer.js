@@ -11,8 +11,10 @@ function readIps(callback) {
 		if (err) {
 	       callback(err, null);
 	   	}
-	    console.log(ips); 
-	    var arrayIps = ips.split("\n");  
+	    var arrayIps = ips.split("\n");
+	    if (arrayIps.indexOf("")) {
+	    	arrayIps.splice(arrayIps.indexOf(""), 1);
+	    }
 	    console.log(arrayIps);
 	    callback(null, arrayIps);
 	});
