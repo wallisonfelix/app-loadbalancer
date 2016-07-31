@@ -3,7 +3,6 @@ var http = require('http');
 var proxy = httpProxy.createProxyServer();
 var fs = require('fs');
  
-var IP_DEFAULT = "172.17.0.3";
 var PORT_DEFAULT = "80";
 
 function readIps(callback) {
@@ -23,7 +22,7 @@ function readIps(callback) {
 function randomUrl(callback) {
 	readIps(function(err, ips) {	
 		if (err) {
-	       callback("http://" + IP_DEFAULT + ":" + PORT_DEFAULT);
+	       callback(err, null);
 	   	}
 	   	callback("http://" + ips[Math.floor(Math.random() * ips.length)]  + ":" + PORT_DEFAULT);
 	});
