@@ -6,7 +6,7 @@ var fs = require('fs');
 var PORT_DEFAULT = "80";
 
 function readIps(callback) {
-	fs.readFile('../ips.txt', 'utf8', function(err, ips) {	
+	fs.readFile(__dirname + '../ips.txt', 'utf8', function(err, ips) {	
 		if (err) {
 	       callback(err, null);
 	   	}
